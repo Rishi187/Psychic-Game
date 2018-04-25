@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Psychic Game</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+
+<body>
+        <div id="game">
+                <div class="container jumbotron mt-lg-5">
+                  <div class="row">
+                    <div class="col-md-12" id="game">
+                        <h1 class="text-center">THE PHYCHIC GAME</h1>
+                        <h2 class="text-center">Guess what letter I'm thinking of</h2> 
+                      <p class="text-center">Press any letter to start playing!!</p>
+            
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+
+        <script type="text/javascript">
+
+        var options = ["q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m"]                       
+        var wins = 0;
+        var losses = 0;
+        var guessLeft = 10;
+        var guessSofar = 0;
+        
+        
+        document.onkeyup = function() {
+                var userGuess = String.fromCharCode(event.keyCode).
+                toLowerCase();
+
+                console.log(userGuess);
+                
+                var computerGuess = options[Math.floor(Math.random()*options.length)];
+
+                console.log(computerGuess);
+        
+                if (userGuess===computerGuess){
+                    wins++;guessSofar = 0;guessLeft = 10;
+                    
+                }
+                else {
+                    (userGuess!==computerGuess)
+                    losses++;guessLeft--;guessSofar++;
+                    
+            }
+            var html = "<p>wins: " + wins + "</p>" +
+                        "<p>losses: " + losses + "</p>" +
+                        "<p>Guesses Left: " + guessLeft + "</p>" +
+                        "<p>Your Guesses so Far: " + guessSofar + "</p>";
+
+                        document.querySelector("#game").innerHTML = html;
+        }
+    </script>
+
+</body>
+
+</html>
