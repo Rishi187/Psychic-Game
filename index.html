@@ -22,7 +22,7 @@
             </div>
 
 
-
+<!-- declare the objects for the game -->
 
         <script type="text/javascript">
 
@@ -42,16 +42,26 @@
                 var computerGuess = options[Math.floor(Math.random()*options.length)];
 
                 console.log(computerGuess);
+
+
         
                 if (userGuess===computerGuess){
-                    wins++;guessSofar = 0;guessLeft = 10;
+                    wins++;
+                    guessSofar = 0;
+                    guessLeft = 10;
                     
                 }
-                else {
-                    (userGuess!==computerGuess)
-                    losses++;guessLeft--;guessSofar++;
+                else if(userGuess!==computerGuess){
+                    guessLeft--;
+                    guessSofar++;     
                     
-            }
+                    if(guessLeft == 0){
+                    losses++; 
+                    guessLeft=10;
+                    };
+                };
+                
+
             var html = "<p>wins: " + wins + "</p>" +
                         "<p>losses: " + losses + "</p>" +
                         "<p>Guesses Left: " + guessLeft + "</p>" +
